@@ -85,7 +85,15 @@
                   card.classList.add("animate__zoomOutRight")
                   card.classList.add("green-blur")
               }
-              let response = await fetch('http://www.boredapi.com/api/activity')
+
+            let params = { 
+                              method: 'GET',
+                              headers: {
+                                accept: 'application/json',
+                              },
+                          }
+              let response = await fetch('http://www.boredapi.com/api/activity', params)
+              
               let activity = await response.json()
 
               if(activity){
@@ -112,7 +120,13 @@
                 card.classList.add("green-blur")
             }
             let url = new URL("https://www.boredapi.com/api/activity");
-            let response = await fetch(url)
+            let params = { 
+                              method: 'GET',
+                              headers: {
+                                accept: 'application/json',
+                              },
+                          }
+            let response = await fetch(url, params)
             let activity = await response.json()
 
             if(activity){
