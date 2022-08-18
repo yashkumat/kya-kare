@@ -50,7 +50,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script>
+<!--     <script>
         async function getActivity(type_of_reaction){
             let card = document.getElementById('card')
             if(!type_of_reaction){
@@ -74,6 +74,31 @@
             }, 1000)
             
         }
-    </script>
+    </script> -->
+       <script>
+          async function getActivity(type_of_reaction){
+              let card = document.getElementById('card')
+              if(!type_of_reaction){
+                  card.classList.add("animate__zoomOutLeft")
+                  card.classList.add("red-blur")
+              }else{
+                  card.classList.add("animate__zoomOutRight")
+                  card.classList.add("green-blur")
+              }
+              let response = await fetch('https://www.boredapi.com/api/activity')
+              let activity = await response.json()
+
+              if(activity){
+                  if(!type_of_reaction){
+                      card.classList.remove("animate__zoomOutLeft")
+                      card.classList.remove("red-blur")
+                  }else{
+                      card.classList.remove("animate__zoomOutRight")
+                      card.classList.remove("green-blur")
+                  }
+                  document.getElementById('activity_to_do').innerHTML = activity.activity
+              }
+          }
+       </script>
   </body>
 </html>
