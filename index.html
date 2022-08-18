@@ -115,15 +115,13 @@
                 card.classList.add("green-blur")
             }
             let response = await fetch('https://www.boredapi.com/api/activity', params)
-            let activity = await response.json()
+            let activity = await response.text()
 
             if(activity){
                 if(!type_of_reaction){
-                    card.classList.remove("animate__zoomOutLeft")
-                    card.classList.remove("red-blur")
+                    card.classList.remove("animate__zoomOutLeft", "red-blur")
                 }else{
-                    card.classList.remove("animate__zoomOutRight")
-                    card.classList.remove("green-blur")
+                    card.classList.remove("animate__zoomOutRight", "green-blur")
                 }
                 document.getElementById('activity_to_do').innerHTML = activity.activity
             }
