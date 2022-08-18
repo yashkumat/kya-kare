@@ -121,7 +121,7 @@
               url.searchParams.append("cohort", cohort);
 //            creative = await fetch(url);
             let response = await fetch(url)
-            let activity = await response.text()
+            let activity = await response.json()
 
             if(activity){
                 if(!type_of_reaction){
