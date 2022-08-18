@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kya Kare</title>
+    <meta name = "keywords" content = "HTML, CSS, JS, Bootstrap, animate.style Fetch API, boredapi" />
+    <meta name = "description" content = "Find activity to do when you are bored. Learning about fetch api" />
+    <meta name = "author" content = "yash kumat" />
+    <meta http-equiv = "refresh" content = "10" />
+    <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8" />
+    <link rel="icon" href="icon.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <style>
+        body{
+            height: 100vh;
+        }
+        .card-container{
+            height: 100vh;
+        }
+        .red-blur{
+            background-color: rgba(255, 0, 0, 0.25);
+            border: 1px solid rgba(255, 0, 0, 0.5) ;
+        }
+        .green-blur{
+            background-color: rgba(0, 255, 0, 0.25);
+            border: 1px solid rgba(0, 255, 0, 0.5)
+        }
+        .card-link{
+            margin: 50px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="card-container d-flex justify-content-center align-items-center">
+                    <div class="card animate__animated" id="card">
+                        <div class="card-body text-center">
+                            <h3>Kya Kare <img src="icon.png" width="50" height="50" alt=""> </h3>
+                            <h5 class="card-text my-4" id="activity_to_do">“I had to decide what I was going to do, and what I was going to be. I was standing there, waiting for someone to do something , till I realised the person I was waiting for was myself.”</h5>
+                            <a href="#" class="card-link" onclick="getActivity(0)" id="nope">
+                                <svg class="text-danger" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                            </a>
+                            <a href="#" class="card-link" onclick="getActivity(1)" id="love">
+                                <svg class="text-success" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script>
+        async function getActivity(type_of_reaction){
+            let card = document.getElementById('card')
+            if(!type_of_reaction){
+                card.classList.add("animate__zoomOutLeft")
+                card.classList.add("red-blur")
+            }else{
+                card.classList.add("animate__zoomOutRight")
+                card.classList.add("green-blur")
+            }
+            let response = await fetch('https://www.boredapi.com/api/activity')
+            let activity = await response.json()
+            setTimeout(()=>{
+                if(!type_of_reaction){
+                    card.classList.remove("animate__zoomOutLeft")
+                    card.classList.remove("red-blur")
+                }else{
+                    card.classList.remove("animate__zoomOutRight")
+                    card.classList.remove("green-blur")
+                }
+                document.getElementById('activity_to_do').innerHTML = activity.activity
+            }, 1000)
+        }
+    </script>
+  </body>
+</html>
