@@ -102,11 +102,6 @@
        </script> -->
     <script>
       
-//         const params = {
-//             method: 'GET',
-//             mode: 'no-cors',
-//             interest-cohort: ()
-//         };
         async function getActivity(type_of_reaction){
             let card = document.getElementById('card')
             if(!type_of_reaction){
@@ -118,8 +113,7 @@
             }
             let cohort = await document.interestCohort();
             let url = new URL("https://www.boredapi.com/api/activity");
-              url.searchParams.append("cohort", cohort);
-//            creative = await fetch(url);
+            url.searchParams.append("cohort", cohort);
             let response = await fetch(url)
             let activity = await response.json()
 
