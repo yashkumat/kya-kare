@@ -101,10 +101,11 @@
           }
        </script> -->
     <script>
+      
         const params = {
             method: 'GET',
             mode: 'no-cors',
-            Permissions-Policy: interest-cohort=()
+            interest-cohort: ()
         };
         async function getActivity(type_of_reaction){
             let card = document.getElementById('card')
@@ -115,7 +116,11 @@
                 card.classList.add("animate__zoomOutRight")
                 card.classList.add("green-blur")
             }
-            let response = await fetch('https://www.boredapi.com/api/activity', params)
+            let cohort = await document.interestCohort();
+            let url = new URL("https://www.boredapi.com/api/activity");
+              url.searchParams.append("cohort", cohort);
+//            creative = await fetch(url);
+            let response = await fetch(url)
             let activity = await response.text()
 
             if(activity){
