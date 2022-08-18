@@ -26,9 +26,6 @@
             background-color: rgba(0, 255, 0, 0.25);
             border: 1px solid rgba(0, 255, 0, 0.5)
         }
-        .card-link{
-            margin: 30px;
-        }
     </style>
   </head>
   <body>
@@ -40,10 +37,10 @@
                         <div class="card-body text-center">
                             <h3>Kya Kare <img src="icon.png" width="50" height="50" alt=""> </h3>
                             <h5 class="card-text my-4" id="activity_to_do">“I had to decide what I was going to do, and what I was going to be. I was standing there, waiting for someone to do something , till I realised the person I was waiting for was myself.”</h5>
-                            <a href="#" class="card-link" onclick="getActivity(0)" id="nope">
+                            <a href="#" class="card-link mx-3" onclick="getActivity(0)" id="nope">
                                 <svg class="text-danger" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
                             </a>
-                            <a href="#" class="card-link" onclick="getActivity(1)" id="love">
+                            <a href="#" class="card-link mx-3" onclick="getActivity(1)" id="love">
                                 <svg class="text-success" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                             </a>
                         </div>
@@ -73,8 +70,8 @@
                     card.classList.remove("animate__zoomOutRight")
                     card.classList.remove("green-blur")
                 }
-                document.getElementById('activity_to_do').innerHTML = activity.activity
             }, 1000)
+            document.getElementById('activity_to_do').innerHTML = activity.activity
         }
     </script>
   </body>
