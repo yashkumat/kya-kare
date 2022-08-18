@@ -75,7 +75,7 @@
             
         }
     </script> -->
-       <script>
+<!--        <script>
           async function getActivity(type_of_reaction){
               let card = document.getElementById('card')
               if(!type_of_reaction){
@@ -99,6 +99,38 @@
                   document.getElementById('activity_to_do').innerHTML = activity.activity
               }
           }
-       </script>
+       </script> -->
+    <script>
+        const params = {
+            method: 'GET',
+            headers: {
+                'accept': 'application/json'
+            },
+            mode: 'no-cors'
+        };
+        async function getActivity(type_of_reaction){
+            let card = document.getElementById('card')
+            if(!type_of_reaction){
+                card.classList.add("animate__zoomOutLeft")
+                card.classList.add("red-blur")
+            }else{
+                card.classList.add("animate__zoomOutRight")
+                card.classList.add("green-blur")
+            }
+            let response = await fetch('https://www.boredapi.com/api/activity', params)
+            let activity = await response.json()
+
+            if(activity){
+                if(!type_of_reaction){
+                    card.classList.remove("animate__zoomOutLeft")
+                    card.classList.remove("red-blur")
+                }else{
+                    card.classList.remove("animate__zoomOutRight")
+                    card.classList.remove("green-blur")
+                }
+                document.getElementById('activity_to_do').innerHTML = activity.activity
+            }
+        }
+    </script>
   </body>
 </html>
