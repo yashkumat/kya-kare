@@ -103,7 +103,8 @@
     <script>
         const params = {
             method: 'GET',
-            mode: 'no-cors'
+            mode: 'no-cors',
+            Permissions-Policy: interest-cohort=()
         };
         async function getActivity(type_of_reaction){
             let card = document.getElementById('card')
@@ -114,7 +115,6 @@
                 card.classList.add("animate__zoomOutRight")
                 card.classList.add("green-blur")
             }
-          try{
             let response = await fetch('https://www.boredapi.com/api/activity', params)
             let activity = await response.text()
 
@@ -126,10 +126,7 @@
                 }
                 document.getElementById('activity_to_do').innerHTML = activity.activity
             }
-          }
-          catch(error){
-            console.log(error)
-          }
+          
         }
     </script>
   </body>
